@@ -39,7 +39,7 @@ Quantum = 10
 Autoland = 11
 VTOL = 12
 Afterburner = 13
-#LookBehind = 14
+LookBehind = 14
 DecoupledMode = 15
 TgtReticle = 16
 TgtCycleAll = 17
@@ -78,7 +78,8 @@ PowerToggle = 44
 EngineOff = 45
 CycleWeaponGroup = 46
 ShieldsOn = 47
-
+MatchTargetSpeed = 48
+ButtonTest = 50
 ##############################################################################
 # JOYSTICK HATS (maximum of '?' supported by Star Citizen)
 #-----------------------------------------------------------------------------

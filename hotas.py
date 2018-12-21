@@ -34,7 +34,7 @@ JOY_Id = 72287234
 
 # Set desired offset rotation amount in degrees. This is useful for those who
 # have a centered joystick that are mounted in this way for ergonomic reasons
-JOY_Rotation = -39
+JOY_Rotation = 85
 
 # Set the following actions to the physical axes on the joystick
 JOYAXIS_Yaw = 1
@@ -154,7 +154,11 @@ THRBTN_Afterburner = 7                 # ##WORKING vJoy 13         SPDF (Fat two
 THRBTN_LookBehind = 8                  # ##WORKING vJoy 14         SPDB (Fat two way backward) (sc_camera.py)
 
 #LEFT THROTTLE BUTTON (RED) (sc_throttle.py)
-THRBTN_DecoupledModeToggle = 15        # ##WORKING vJoy 15          LTB (red pinky button) (sc_throttle.py)
+THRBTN_MatchTarget = 15                # ##WORKING vJoy 48                    LTB (red pinky button) (sc_throttle.py)
+
+
+#RIGHT BOAT SWITCH
+THRBTN_DecoupledModeToggle = 10        # ##WORKING vJoy 15          BOAT (Boat back) (sc_throttle.py)
 
 
 
@@ -170,3 +174,9 @@ THRHAT_StrafeUpDown = 1                # HAT 1 (up/down) (sc_throttle.py)
 THRHAT_Roll = 1                        # HAT 1 (left/right) (sc_throttle.py)
 
 
+##############################################################################
+# Button Box Information
+BUT_Name = "BU0836X Interface"
+BUT_Id = 500305921
+
+BUT_Test = 1

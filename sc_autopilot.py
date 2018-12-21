@@ -16,48 +16,48 @@ throttle = gremlin.input_devices.JoystickDecorator(hotas.THR_Name,
 @throttle.button(hotas.SWITCH_AutopilotUp)
 def onThrottleBtn_AutopilotUp(event, joy, vjoy):
     if event.is_pressed:
-        vjoy[1].button(scmap.Autoland).is_pressed = True
+        vjoy[15].button(scmap.Autoland).is_pressed = True
         time.sleep(.500)
-        vjoy[1].button(scmap.Autoland).is_pressed = False
+        vjoy[15].button(scmap.Autoland).is_pressed = False
     else:
-        vjoy[1].button(scmap.Autoland).is_pressed = True
+        vjoy[15].button(scmap.Autoland).is_pressed = True
         time.sleep(.500)
-        vjoy[1].button(scmap.Autoland).is_pressed = False
+        vjoy[15].button(scmap.Autoland).is_pressed = False
 
 @throttle.button(hotas.SWITCH_AutopilotDown)
 def onThrottleBtn_AutopilotDown(event, joy, vjoy):
     if event.is_pressed:
-        vjoy[1].button(scmap.VTOL).is_pressed = True
+        vjoy[15].button(scmap.VTOL).is_pressed = True
         time.sleep(.500)
-        vjoy[1].button(scmap.VTOL).is_pressed = False
+        vjoy[15].button(scmap.VTOL).is_pressed = False
     else:
-        vjoy[1].button(scmap.VTOL).is_pressed = True
+        vjoy[15].button(scmap.VTOL).is_pressed = True
         time.sleep(.500)
-        vjoy[1].button(scmap.VTOL).is_pressed = False
+        vjoy[15].button(scmap.VTOL).is_pressed = False
 
 @throttle.button(hotas.THRBTN_AutopilotEngage)
 def onThrottleBtn_AutopilotEngage(event, joy, vjoy):
-    vjoy[1].button(scmap.LandingGear).is_pressed = event.is_pressed
+    vjoy[15].button(scmap.LandingGear).is_pressed = event.is_pressed
        
 
         
 '''
     if event.is_pressed:
-            vjoy[1].button(scmap.Autoland).is_pressed = True
+            vjoy[15].button(scmap.Autoland).is_pressed = True
             time.sleep(.500)
-            vjoy[1].button(scmap.Autoland).is_pressed = False
+            vjoy[15].button(scmap.Autoland).is_pressed = False
     else:
-        vjoy[1].button(scmap.Autoland).is_pressed = True
+        vjoy[15].button(scmap.Autoland).is_pressed = True
         time.sleep(.500)
-        vjoy[1].button(scmap.Autoland).is_pressed = False
+        vjoy[15].button(scmap.Autoland).is_pressed = False
   '''          
 
 
 
 '''
 def cancelAutopilot(vjoy):
-    vjoy[1].button(scmap.Autoland).is_pressed = False
-    vjoy[1].button(scmap.MatchVel).is_pressed = False
+    vjoy[15].button(scmap.Autoland).is_pressed = False
+    vjoy[15].button(scmap.MatchVel).is_pressed = False
 
 @throttle.button(hotas.THRBTN_AutopilotEngage) 
 def onThrottleBtn_AutopilotEngage(event, vjoy, joy):
@@ -65,12 +65,12 @@ def onThrottleBtn_AutopilotEngage(event, vjoy, joy):
         thr = joy[hotas.THR_Name]
         if not thr.button(hotas.SWITCH_AutopilotPath).is_pressed:
             if not thr.button(hotas.SWITCH_AutopilotAlt).is_pressed:
-                vjoy[1].button(scmap.MatchVel).is_pressed = True
+                vjoy[15].button(scmap.MatchVel).is_pressed = True
         if thr.button(hotas.SWITCH_AutopilotAlt).is_pressed:
-            vjoy[1].button(scmap.Autoland).is_pressed = True
+            vjoy[15].button(scmap.Autoland).is_pressed = True
     else:
-        vjoy[1].button(scmap.MatchVel).is_pressed = False
-        vjoy[1].button(scmap.Autoland).is_pressed = False
+        vjoy[15].button(scmap.MatchVel).is_pressed = False
+        vjoy[15].button(scmap.Autoland).is_pressed = False
 
 @throttle.button(hotas.SWITCH_AutopilotPath)
 def onThrottleSwitch_AutopilotPath(event, vjoy):

@@ -39,8 +39,8 @@ def setAxes(vjoy):
     virtual_angle = radians + physical_angle
     # Scale factor between virtual and physical vector
     scale = maxVectorLength(virtual_angle) / maxVectorLength(physical_angle)
-    vjoy[1].axis(scmap.Yaw).value = (cosX*actualX + sinY*actualY) * scale
-    vjoy[1].axis(scmap.Pitch).value = (sinX*actualX + cosY*actualY) * scale
+    vjoy[15].axis(scmap.Yaw).value = (cosX*actualX + sinY*actualY) * scale
+    vjoy[15].axis(scmap.Pitch).value = (sinX*actualX + cosY*actualY) * scale
 
 @joystick.axis(hotas.JOYAXIS_Yaw)
 def onJoystickAxis_X(event, vjoy):
