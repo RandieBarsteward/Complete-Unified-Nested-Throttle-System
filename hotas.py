@@ -1,7 +1,5 @@
-"""'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''
-                                 
+"""''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''  
               (Joystick Gremlin Profile/Scripts for Star Citizen)
-        
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"""
 
                           ###########################
@@ -14,17 +12,15 @@
 
 USING_RUDDER_PEDALS = True
 RUDDER_PEDALS_INVERT = -1.0 # must be -1.0 or 1.0 (negative for invert)
-
 ##############################################################################
 # Rudder Pedals Information
 RUD_Name = "Saitek Pro Flight Combat Rudder Pedals"
 RUD_Id = 111347556
 
-# Set the following actions to the physical axes on your rudder. #(sc_throttle.py)
+# Set the following actions to the physical axes on your rudder (sc_throttle.py)
 RUDAXIS_Reverse = 1  # Z Axis                   L PEDAL(sc_throttle.py)
-RUDAXIS_Boost = 2    ###WORKING   vJoy 8        R PEDAL(sc_throttle.py)
+RUDAXIS_Boost = 2    # WORKING   vJoy 8        R PEDAL(sc_throttle.py)
 RUDAXIS_Roll = 3     # Rz Axis                  PIVOT     (sc_throttle.py)
-
 RUDAXISBTN_Threshold = -0.5         # Less than = no press
 
 ##############################################################################
