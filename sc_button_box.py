@@ -15,4 +15,4 @@ button = gremlin.input_devices.JoystickDecorator(hotas.BUT_Name,
                                                    
 @button.button(hotas.BUT_Test)
 def onThrottleBtn_BUT_Test(event, vjoy):
-    vjoy[15].button(scmap.ButtonTest).is_pressed = event.is_pressed
+    vjoy[1].button(scmap.ButtonTest).is_pressed = event.is_pressed
