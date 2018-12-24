@@ -2,6 +2,8 @@
                                 
               (Joystick Gremlin Profile/Scripts for Star Citizen)
 
+Moduel intended to integrate a custom button box/controller into Joystick Gremlin.  
+
 '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"""
 import gremlin
 import hotas

@@ -18,6 +18,7 @@ throttle = gremlin.input_devices.JoystickDecorator(hotas.THR_Name,
 isAlphaFire = False
 curWepGrp = 1
 
+#Function to control fire of wpn group 1 and/or 2 via the Cyclefire switch (defined in sc_hotas)
 def setWeapons(vjoy, joy):
     global curWepGrp
     if joy[hotas.JOY_Name].button(hotas.JOYBTN_FireWep).is_pressed:
@@ -53,8 +54,9 @@ def onJoystickBtn_CycleWeaponGroup(event, vjoy, joy):
 #        isAlphaFire = False
 #        curWepGrp = 2 if (curWepGrp == 1) else 1
 #    setWeapons(vjoy, joy)
-    
-@joystick.hat(hotas.JOYHAT_Zoom) #allows all direction on HAT 1
+
+#allows all direction on HAT 1
+@joystick.hat(hotas.JOYHAT_Zoom)
 def onJoystickHat_Zoom(event, vjoy, joy):
     vjoy[1].hat(1).direction = (event.value)
 

@@ -15,6 +15,7 @@ throttle = gremlin.input_devices.JoystickDecorator(hotas.THR_Name,
                                                    hotas.THR_Id,
                                                    "Default")
 
+#Controls Joystick Alt switch and prevents duplicate input of controls
 @joystick.button(hotas.SWITCH_JoystickAltMod)
 def onJoystickSwitch_AltModScanning(event, vjoy):
     vjoy[1].button(scmap.TgtReticle).is_pressed = False

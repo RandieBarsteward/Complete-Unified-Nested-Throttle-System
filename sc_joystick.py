@@ -2,7 +2,7 @@
                                  
               (Joystick Gremlin Profile/Scripts for Star Citizen)
 
-                          '''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"""
+'''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''''"""
 import gremlin
 import math
 import hotas
