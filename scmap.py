@@ -80,7 +80,17 @@ CycleWeaponGroup = 46
 ShieldsOn = 47
 MatchTargetSpeed = 48
 ButtonTest = 50
+ShipLights = 51
 ##############################################################################
 # JOYSTICK HATS (maximum of '?' supported by Star Citizen)
 #-----------------------------------------------------------------------------
 ZoomHat_UpDown = 1
+
+##############################################################################
+# BUTTON BOX (maximum of '?' supported by Star Citizen)
+#-----------------------------------------------------------------------------
+
+ComstabOff = 52
+GSAFE = 53
+SelfDestruct = 53
+

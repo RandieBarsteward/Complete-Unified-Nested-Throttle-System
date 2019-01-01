@@ -4,13 +4,13 @@
         <device id="0" label="" name="keyboard" type="keyboard" windows_id="0">
             <mode name="Default"/>
         </device>
-        <device id="72287234" label="" name="Joystick - HOTAS Warthog" type="joystick" windows_id="2">
+        <device id="72287234" label="" name="Joystick - HOTAS Warthog" type="joystick" windows_id="3">
             <mode name="Default">
-                <axis description="[script: joystick] (Y-Rotation Axis)" id="1"/>
-                <axis description="[script: joystick] (X-Rotation Axis)" id="2"/>
-                <button description="[script: gunnery] (Btns 1, 2)" id="1"/>
-                <button description="[script: gunnery] (Btn 4)" id="2"/>
-                <button description="[script: gunnery] (Btn 3)" id="3"/>
+                <axis description="" id="1"/>
+                <axis description="" id="2"/>
+                <button description="" id="1"/>
+                <button description="" id="2"/>
+                <button description="" id="3"/>
                 <button description="" id="4"/>
                 <button description="" id="5"/>
                 <button description="" id="6"/>
@@ -30,9 +30,9 @@
                 <hat description="" id="1"/>
             </mode>
         </device>
-        <device id="72287236" label="" name="Throttle - HOTAS Warthog" type="joystick" windows_id="4">
+        <device id="72287236" label="" name="Throttle - HOTAS Warthog" type="joystick" windows_id="5">
             <mode name="Default">
-                <axis description="[script: camera] (Hat 4)" id="1"/>
+                <axis description="" id="1"/>
                 <axis description="" id="2"/>
                 <axis description="" id="3"/>
                 <axis description="" id="4"/>
@@ -75,152 +75,8 @@
         <device id="111347556" label="" name="Saitek Pro Flight Combat Rudder Pedals" type="joystick" windows_id="0">
             <mode name="Default">
                 <axis description="" id="1"/>
-                <axis description="Right pedal :  Vjoy 8" id="2"/>
-                <axis description="[script: propulsion] (Axis 4)" id="3"/>
-            </mode>
-        </device>
-        <device id="305446573" label="" name="vJoy Device" type="joystick" windows_id="-1">
-            <mode name="Default">
-                <axis description="" id="1"/>
                 <axis description="" id="2"/>
                 <axis description="" id="3"/>
-                <axis description="" id="4"/>
-                <axis description="" id="5"/>
-                <axis description="" id="6"/>
-                <axis description="" id="7"/>
-                <axis description="" id="8"/>
-                <button description="" id="1"/>
-                <button description="" id="2"/>
-                <button description="" id="3"/>
-                <button description="" id="4"/>
-                <button description="" id="5"/>
-                <button description="" id="6"/>
-                <button description="" id="7"/>
-                <button description="" id="8"/>
-                <button description="" id="9"/>
-                <button description="" id="10"/>
-                <button description="" id="11"/>
-                <button description="" id="12"/>
-                <button description="" id="13"/>
-                <button description="" id="14"/>
-                <button description="" id="15"/>
-                <button description="" id="16"/>
-                <button description="" id="17"/>
-                <button description="" id="18"/>
-                <button description="" id="19"/>
-                <button description="" id="20"/>
-                <button description="" id="21"/>
-                <button description="" id="22"/>
-                <button description="" id="23"/>
-                <button description="" id="24"/>
-                <button description="" id="25"/>
-                <button description="" id="26"/>
-                <button description="" id="27"/>
-                <button description="" id="28"/>
-                <button description="" id="29"/>
-                <button description="" id="30"/>
-                <button description="" id="31"/>
-                <button description="" id="32"/>
-                <button description="" id="33"/>
-                <button description="" id="34"/>
-                <button description="" id="35"/>
-                <button description="" id="36"/>
-                <button description="" id="37"/>
-                <button description="" id="38"/>
-                <button description="" id="39"/>
-                <button description="" id="40"/>
-                <button description="" id="41"/>
-                <button description="" id="42"/>
-                <button description="" id="43"/>
-                <button description="" id="44"/>
-                <button description="" id="45"/>
-                <button description="" id="46"/>
-                <button description="" id="47"/>
-                <button description="" id="48"/>
-                <button description="" id="49"/>
-                <button description="" id="50"/>
-                <button description="" id="51"/>
-                <button description="" id="52"/>
-                <button description="" id="53"/>
-                <button description="" id="54"/>
-                <button description="" id="55"/>
-                <button description="" id="56"/>
-                <button description="" id="57"/>
-                <button description="" id="58"/>
-                <button description="" id="59"/>
-                <button description="" id="60"/>
-                <button description="" id="61"/>
-                <button description="" id="62"/>
-                <button description="" id="63"/>
-                <button description="" id="64"/>
-                <button description="" id="65"/>
-                <button description="" id="66"/>
-                <button description="" id="67"/>
-                <button description="" id="68"/>
-                <button description="" id="69"/>
-                <button description="" id="70"/>
-                <button description="" id="71"/>
-                <button description="" id="72"/>
-                <button description="" id="73"/>
-                <button description="" id="74"/>
-                <button description="" id="75"/>
-                <button description="" id="76"/>
-                <button description="" id="77"/>
-                <button description="" id="78"/>
-                <button description="" id="79"/>
-                <button description="" id="80"/>
-                <button description="" id="81"/>
-                <button description="" id="82"/>
-                <button description="" id="83"/>
-                <button description="" id="84"/>
-                <button description="" id="85"/>
-                <button description="" id="86"/>
-                <button description="" id="87"/>
-                <button description="" id="88"/>
-                <button description="" id="89"/>
-                <button description="" id="90"/>
-                <button description="" id="91"/>
-                <button description="" id="92"/>
-                <button description="" id="93"/>
-                <button description="" id="94"/>
-                <button description="" id="95"/>
-                <button description="" id="96"/>
-                <button description="" id="97"/>
-                <button description="" id="98"/>
-                <button description="" id="99"/>
-                <button description="" id="100"/>
-                <button description="" id="101"/>
-                <button description="" id="102"/>
-                <button description="" id="103"/>
-                <button description="" id="104"/>
-                <button description="" id="105"/>
-                <button description="" id="106"/>
-                <button description="" id="107"/>
-                <button description="" id="108"/>
-                <button description="" id="109"/>
-                <button description="" id="110"/>
-                <button description="" id="111"/>
-                <button description="" id="112"/>
-                <button description="" id="113"/>
-                <button description="" id="114"/>
-                <button description="" id="115"/>
-                <button description="" id="116"/>
-                <button description="" id="117"/>
-                <button description="" id="118"/>
-                <button description="" id="119"/>
-                <button description="" id="120"/>
-                <button description="" id="121"/>
-                <button description="" id="122"/>
-                <button description="" id="123"/>
-                <button description="" id="124"/>
-                <button description="" id="125"/>
-                <button description="" id="126"/>
-                <button description="" id="127"/>
-                <button description="" id="128"/>
-                <hat description="" id="1"/>
-                <hat description="" id="2"/>
-                <hat description="" id="3"/>
-                <hat description="" id="4"/>
             </mode>
         </device>
         <device id="500305921" label="" name="BU0836X Interface" type="joystick" windows_id="2">
@@ -260,7 +116,7 @@
                 <hat description="" id="1"/>
             </mode>
         </device>
-        <device id="3203399405" label="" name="Virtual Hid Device" type="joystick" windows_id="3">
+        <device id="3203399405" label="" name="Virtual Hid Device" type="joystick" windows_id="4">
             <mode name="Default">
                 <axis description="" id="1"/>
                 <axis description="" id="2"/>
@@ -435,154 +291,6 @@
                 <button description="" id="126"/>
                 <button description="" id="127"/>
                 <button description="" id="128"/>
-                <hat description="" id="1"/>
-                <hat description="" id="2"/>
-                <hat description="" id="3"/>
-                <hat description="" id="4"/>
-            </mode>
-        </vjoy-device>
-        <vjoy-device id="15" label="" name="vJoy Device" type="vjoy" windows_id="15">
-            <mode name="Default">
-                <axis description="" id="1"/>
-                <axis description="" id="2"/>
-                <axis description="" id="3"/>
-                <axis description="" id="4"/>
-                <axis description="" id="5"/>
-                <axis description="" id="6"/>
-                <axis description="" id="7"/>
-                <axis description="" id="8"/>
-                <button description="" id="1"/>
-                <button description="" id="2"/>
-                <button description="" id="3"/>
-                <button description="" id="4"/>
-                <button description="" id="5"/>
-                <button description="" id="6"/>
-                <button description="" id="7"/>
-                <button description="" id="8"/>
-                <button description="" id="9"/>
-                <button description="" id="10"/>
-                <button description="" id="11"/>
-                <button description="" id="12"/>
-                <button description="" id="13"/>
-                <button description="" id="14"/>
-                <button description="" id="15"/>
-                <button description="" id="16"/>
-                <button description="" id="17"/>
-                <button description="" id="18"/>
-                <button description="" id="19"/>
-                <button description="" id="20"/>
-                <button description="" id="21"/>
-                <button description="" id="22"/>
-                <button description="" id="23"/>
-                <button description="" id="24"/>
-                <button description="" id="25"/>
-                <button description="" id="26"/>
-                <button description="" id="27"/>
-                <button description="" id="28"/>
-                <button description="" id="29"/>
-                <button description="" id="30"/>
-                <button description="" id="31"/>
-                <button description="" id="32"/>
-                <button description="" id="33"/>
-                <button description="" id="34"/>
-                <button description="" id="35"/>
-                <button description="" id="36"/>
-                <button description="" id="37"/>
-                <button description="" id="38"/>
-                <button description="" id="39"/>
-                <button description="" id="40"/>
-                <button description="" id="41"/>
-                <button description="" id="42"/>
-                <button description="" id="43"/>
-                <button description="" id="44"/>
-                <button description="" id="45"/>
-                <button description="" id="46"/>
-                <button description="" id="47"/>
-                <button description="" id="48"/>
-                <button description="" id="49"/>
-                <button description="" id="50"/>
-                <button description="" id="51"/>
-                <button description="" id="52"/>
-                <button description="" id="53"/>
-                <button description="" id="54"/>
-                <button description="" id="55"/>
-                <button description="" id="56"/>
-                <button description="" id="57"/>
-                <button description="" id="58"/>
-                <button description="" id="59"/>
-                <button description="" id="60"/>
-                <button description="" id="61"/>
-                <button description="" id="62"/>
-                <button description="" id="63"/>
-                <button description="" id="64"/>
-                <button description="" id="65"/>
-                <button description="" id="66"/>
-                <button description="" id="67"/>
-                <button description="" id="68"/>
-                <button description="" id="69"/>
-                <button description="" id="70"/>
-                <button description="" id="71"/>
-                <button description="" id="72"/>
-                <button description="" id="73"/>
-                <button description="" id="74"/>
-                <button description="" id="75"/>
-                <button description="" id="76"/>
-                <button description="" id="77"/>
-                <button description="" id="78"/>
-                <button description="" id="79"/>
-                <button description="" id="80"/>
-                <button description="" id="81"/>
-                <button description="" id="82"/>
-                <button description="" id="83"/>
-                <button description="" id="84"/>
-                <button description="" id="85"/>
-                <button description="" id="86"/>
-                <button description="" id="87"/>
-                <button description="" id="88"/>
-                <button description="" id="89"/>
-                <button description="" id="90"/>
-                <button description="" id="91"/>
-                <button description="" id="92"/>
-                <button description="" id="93"/>
-                <button description="" id="94"/>
-                <button description="" id="95"/>
-                <button description="" id="96"/>
-                <button description="" id="97"/>
-                <button description="" id="98"/>
-                <button description="" id="99"/>
-                <button description="" id="100"/>
-                <button description="" id="101"/>
-                <button description="" id="102"/>
-                <button description="" id="103"/>
-                <button description="" id="104"/>
-                <button description="" id="105"/>
-                <button description="" id="106"/>
-                <button description="" id="107"/>
-                <button description="" id="108"/>
-                <button description="" id="109"/>
-                <button description="" id="110"/>
-                <button description="" id="111"/>
-                <button description="" id="112"/>
-                <button description="" id="113"/>
-                <button description="" id="114"/>
-                <button description="" id="115"/>
-                <button description="" id="116"/>
-                <button description="" id="117"/>
-                <button description="" id="118"/>
-                <button description="" id="119"/>
-                <button description="" id="120"/>
-                <button description="" id="121"/>
-                <button description="" id="122"/>
-                <button description="" id="123"/>
-                <button description="" id="124"/>
-                <button description="" id="125"/>
-                <button description="" id="126"/>
-                <button description="" id="127"/>
-                <button description="" id="128"/>
-                <hat description="" id="1"/>
-                <hat description="" id="2"/>
-                <hat description="" id="3"/>
-                <hat description="" id="4"/>
             </mode>
         </vjoy-device>
     </vjoy-devices>
