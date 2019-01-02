@@ -2,7 +2,9 @@
 <profile version="7">
     <devices>
         <device id="0" label="" name="keyboard" type="keyboard" windows_id="0">
-            <mode name="Default"/>
+            <mode name="Default">
+                <key description="" extended="False" id="24"/>
+            </mode>
         </device>
         <device id="72287234" label="" name="Joystick - HOTAS Warthog" type="joystick" windows_id="3">
             <mode name="Default">
@@ -291,6 +293,10 @@
                 <button description="" id="126"/>
                 <button description="" id="127"/>
                 <button description="" id="128"/>
+                <hat description="" id="1"/>
+                <hat description="" id="2"/>
+                <hat description="" id="3"/>
+                <hat description="" id="4"/>
             </mode>
         </vjoy-device>
     </vjoy-devices>
@@ -306,5 +312,7 @@
         <module name="C:/Users/Filth/joystick gremlin/Complete-Unified-Nested-Throttle-System-master/sc_throttle.py"/>
         <module name="C:/Users/Filth/joystick gremlin/Complete-Unified-Nested-Throttle-System-master/scmap.py"/>
     </import>
-    <settings/>
+    <settings>
+        <startup-mode>Default</startup-mode>
+    </settings>
 </profile>

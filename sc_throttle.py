@@ -81,6 +81,7 @@ if hotas.USING_RUDDER_PEDALS:
     def onRudderAxisBtn_BrakeReverse(event, vjoy, joy):
         setAxes(vjoy, joy)
 
+
 if hotas.USING_RUDDER_PEDALS:
     @rudders.axis(hotas.RUDAXIS_Boost)
     def onRudderAxisBtn_Boost(event, vjoy):
@@ -89,10 +90,6 @@ if hotas.USING_RUDDER_PEDALS:
         else:
             vjoy[1].button(scmap.Boost).is_pressed = False
 
-if hotas.USING_RUDDER_PEDALS:
-    @rudders.axis(hotas.RUDAXIS_Roll)
-    def onRudderAxis_Rudders(event, vjoy):
-        vjoy[1].axis(scmap.Roll).value = event.value * hotas.RUDDER_PEDALS_INVERT
 
 ##############################################################################
 # Strafe hat
@@ -107,6 +104,12 @@ def onThrottleHat_StrafeUpDown(event, vjoy, joy):
     global isStrafeUpDown
     isStrafeUpDown = event.value[1]
     setAxes(vjoy, joy)
+
+
+if hotas.USING_RUDDER_PEDALS:
+    @throttle.hat(hotas.THRHAT_StrafeUpDown)
+    def onRudderAxisBtn_BrakeReverse(event, vjoy, joy):
+        setAxes(vjoy, joy)
 
 ##############################################################################
 # Strafe buttons

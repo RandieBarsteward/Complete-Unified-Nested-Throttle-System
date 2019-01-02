@@ -40,7 +40,7 @@ Autoland = 11
 VTOL = 12
 Afterburner = 13
 LookBehind = 14
-DecoupledMode = 15
+#DecoupledMode = 15 Removed due to Macro
 TgtReticle = 16
 TgtCycleAll = 17
 TgtCycleAllBack = 18
@@ -73,14 +73,14 @@ OpenAllDoors = 39
 CloseAllDoors = 40
 LockAllDoors = 41
 UnlockAllDoors = 42
-CycleIFCSSafeties = 43
+#CycleIFCSSafeties = 43
 PowerToggle = 44
-EngineOff = 45
+# EngineOff = 45 Removed due to Macro
 CycleWeaponGroup = 46
-ShieldsOn = 47
+#ShieldsOn = 47 Removed due to Macro
 MatchTargetSpeed = 48
 ButtonTest = 50
-ShipLights = 51
+#ShipLights = 51 Removed due to Macro
 ##############################################################################
 # JOYSTICK HATS (maximum of '?' supported by Star Citizen)
 #-----------------------------------------------------------------------------
@@ -92,5 +92,6 @@ ZoomHat_UpDown = 1
 
 ComstabOff = 52
 GSAFE = 53
-SelfDestruct = 53
+SelfDestruct = 38
+#ScanMode = 43 #Removed due to Macro 
 

@@ -13,16 +13,7 @@ throttle = gremlin.input_devices.JoystickDecorator(hotas.THR_Name,
                                                    "Default")
 
 #Function to turn switch to a toggle.  Action issues on both switch on AND switch off, releasing after a short interval 
-@throttle.button(hotas.SWITCH_AutopilotUp)
-def onThrottleBtn_AutopilotUp(event, joy, vjoy):
-    if event.is_pressed:
-        vjoy[1].button(scmap.Autoland).is_pressed = True
-        time.sleep(.500)
-        vjoy[1].button(scmap.Autoland).is_pressed = False
-    else:
-        vjoy[1].button(scmap.Autoland).is_pressed = True
-        time.sleep(.500)
-        vjoy[1].button(scmap.Autoland).is_pressed = False
+
 
 #Function to turn switch to a toggle.  Action issues on both switch on AND switch off, releasing after a short interval
 @throttle.button(hotas.SWITCH_AutopilotDown)
