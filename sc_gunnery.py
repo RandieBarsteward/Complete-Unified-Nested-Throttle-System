@@ -6,6 +6,8 @@
 import gremlin
 import hotas
 import scmap
+import sc_button_box
+
 
 joystick = gremlin.input_devices.JoystickDecorator(hotas.JOY_Name,
                                                    hotas.JOY_Id,
@@ -15,10 +17,53 @@ throttle = gremlin.input_devices.JoystickDecorator(hotas.THR_Name,
                                                    hotas.THR_Id,
                                                    "Default")
 
+button = gremlin.input_devices.JoystickDecorator(hotas.BUT_Name,
+                                                   hotas.BUT_Id,
+                                                   "Default")
+
 isAlphaFire = False
 curWepGrp = 1
+GunArmed = False
+MissileArmed = False
 
 #Function to control fire of wpn group 1 and/or 2 via the Cyclefire switch (defined in sc_hotas)
+
+@button.button(hotas.BUT_GunArm)
+def onThrottleBtn_BUT_GunArm(event, vjoy):
+    global GunArmed
+    if event.is_pressed:
+        GunArmed = True
+    else:
+        GunArmed = False
+
+@button.button(hotas.BUT_MissileArm)
+def onThrottleBtn_BUT_MissileArm(event, vjoy):
+    global MissileArmed
+    if event.is_pressed:
+        MissileArmed = True
+    else:
+        MissileArmed = False
+
+def setWeapons(vjoy, joy):
+    global GunArmed
+    if GunArmed == True:
+        if joy[hotas.JOY_Name].button(hotas.JOYBTN_FireWep).is_pressed:
+            vjoy[1].button(scmap.FireWeaponGroup1).is_pressed = True
+            vjoy[1].button(scmap.FireWeaponGroup2).is_pressed = True
+        else:
+            vjoy[1].button(scmap.FireWeaponGroup1).is_pressed = False
+            vjoy[1].button(scmap.FireWeaponGroup2).is_pressed = False
+
+
+def setMissiles(vjoy, joy):
+    global MissileArmed
+    if MissileArmed == True:
+        if joy[hotas.JOY_Name].button(hotas.JOYBTN_Missiles).is_pressed:
+            vjoy[1].button(scmap.LockFireMissiles).is_pressed = True 
+        else:
+            vjoy[1].button(scmap.LockFireMissiles).is_pressed = False 
+        
+'''
 def setWeapons(vjoy, joy):
     global curWepGrp
     if joy[hotas.JOY_Name].button(hotas.JOYBTN_FireWep).is_pressed:
@@ -35,7 +80,7 @@ def setWeapons(vjoy, joy):
     else:
         vjoy[1].button(scmap.FireWeaponGroup1).is_pressed = False
         vjoy[1].button(scmap.FireWeaponGroup2).is_pressed = False
-
+'''
 @joystick.button(hotas.JOYBTN_FireWep)
 def onJoystickBtn_FireWeapons(event, vjoy, joy):
     setWeapons(vjoy, joy)
@@ -77,9 +122,9 @@ def onThrottleSwitch_AlphaFireWeaponGroups(event, vjoy, joy):
 def onJoystickBtn_CycleWeaponAmmo(event, vjoy):
     vjoy[1].button(scmap.CycleWeaponAmmo).is_pressed = event.is_pressed
 
-@joystick.button(hotas.JOYBTN_Missiles)
-def onJoystickBtn_LockOrFireMissiles(event, vjoy):
-    vjoy[1].button(scmap.LockFireMissiles).is_pressed = event.is_pressed
+#@joystick.button(hotas.JOYBTN_Missiles)
+#def onJoystickBtn_LockOrFireMissiles(event, vjoy):
+#    vjoy[1].button(scmap.LockFireMissiles).is_pressed = event.is_pressed
 
 @throttle.button(hotas.THRBTN_LaunchCounterMeasures)
 def onThrottleBtn_LaunchCounterMeasures(event, vjoy):

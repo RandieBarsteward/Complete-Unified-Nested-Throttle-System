@@ -10,7 +10,7 @@ import hotas
 import scmap
 import time
 import math
-import threading
+
 
 
 button = gremlin.input_devices.JoystickDecorator(hotas.BUT_Name,
@@ -35,40 +35,72 @@ ScanMode = False
 DestructArm = False
 DestructCountdown = False
 WheelsDown = False
+GunArmed = False
+MissileArmed = False
+ShieldOn = True
+
+
+
 
 @button.button(hotas.BUT_Key)
 def onThrottleBtn_BUT_Key(event, vjoy):
     global PowerKey
     global PowerState
+    global ShieldOn
     if event.is_pressed:
         PowerKey = True
-    else:
+    elif event.is_pressed == False and PowerState == False:
+        PowerKey = False
+    elif event.is_pressed == False:
         PowerKey = False
         PowerState = False
-        gremlin.macro.MacroManager().queue_macro(PowerOn_macro)
-        
+        gremlin.macro.MacroManager().queue_macro(PowerOff_macro)
 
 
 @button.button(hotas.BUT_PowerOn)
 def onThrottleBtn_BUT_PowerOn(event, vjoy):
     global PowerKey
     global PowerState
-    if PowerKey == True and PowerState == False:
+    global ShieldOn
+    if event.is_pressed and PowerKey == True and PowerState == False:
         PowerState = True
+        ShieldOn = False
         gremlin.macro.MacroManager().queue_macro(PowerOn_macro)
+
 
 # Create a macro that can be used repeatedly
 PowerOn_macro = gremlin.macro.Macro()
-PowerOn_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), True))
+PowerOn_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), True)) #Turn on power
+PowerOn_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("6"), True)) #Turn off shield
 PowerOn_macro.add_action(gremlin.macro.PauseAction(0.1))
 PowerOn_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), False))
+PowerOn_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("6"), False))
+
+PowerOff_macro = gremlin.macro.Macro()
+PowerOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), True)) #Turn off power.  Double press 5 because of toggle issue with shields where if shields are down 5 toggles shield instead of Power Off
+PowerOff_macro.add_action(gremlin.macro.PauseAction(0.1))
+PowerOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), False))
+PowerOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), True)) 
+PowerOff_macro.add_action(gremlin.macro.PauseAction(0.1))
+PowerOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), False))
+
+PowerAndShieldOff_macro = gremlin.macro.Macro()
+PowerAndShieldOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("6"), True)) #Turn off shield
+PowerAndShieldOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), True)) #Turn off power
+PowerAndShieldOff_macro.add_action(gremlin.macro.PauseAction(0.1))
+PowerAndShieldOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("6"), False))
+PowerAndShieldOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), False))
 
 @button.button(hotas.BUT_EngineOn)
 def onThrottleBtn_BUT_EngineOn(event, vjoy):
-    if event.is_pressed:
+    global PowerKey
+    global PowerState
+    if event.is_pressed and PowerKey == True and PowerState == True:
         gremlin.macro.MacroManager().queue_macro(EngineOn_macro)
-    else:
+        PowerState = True
+    if event.is_pressed == False and PowerKey == True and PowerState == True:
         gremlin.macro.MacroManager().queue_macro(EngineOn_macro)
+        PowerState = False        
 
 # Create a macro that can be used repeatedly
 EngineOn_macro = gremlin.macro.Macro()
@@ -78,17 +110,21 @@ EngineOn_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("4
 
 @button.button(hotas.BUT_ShieldsOn)
 def onThrottleBtn_BUT_ShieldsOn(event, vjoy):
-    if event.is_pressed:
-       gremlin.macro.MacroManager().queue_macro(ShieldsOn_macro)
-    else:
+    global PowerKey
+    global PowerState
+    global ShieldOn
+    if event.is_pressed and PowerKey == True and PowerState == True:
         gremlin.macro.MacroManager().queue_macro(ShieldsOn_macro)
-
-# Create a macro that can be used repeatedly
+        ShieldOn = True        
+    if event.is_pressed == False and PowerKey == True and PowerState == True:
+        gremlin.macro.MacroManager().queue_macro(ShieldsOn_macro)
+        ShieldOn = False
+        
 ShieldsOn_macro = gremlin.macro.Macro()
 ShieldsOn_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("6"), True))
 ShieldsOn_macro.add_action(gremlin.macro.PauseAction(0.1))
 ShieldsOn_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("6"), False))
-        
+     
 @button.button(hotas.BUT_ShipLights)
 def onThrottleBtn_BUT_ShipLights(event, vjoy):
     if event.is_pressed:
@@ -105,41 +141,25 @@ ShipLights_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name(
 ##############################################################################
 #IFCS Section
 
-@button.button(hotas.BUT_DecoupleOff)
-def onThrottleBtn_BUT_DecoupleOff(event, vjoy):
+@button.button(hotas.BUT_IFCS)
+def onThrottleBtn_BUT_IFCS(event, vjoy):
     if event.is_pressed:
-        gremlin.macro.MacroManager().queue_macro(Decouple_macro)
-    else:
-        gremlin.macro.MacroManager().queue_macro(Decouple_macro)
+        gremlin.macro.MacroManager().queue_macro(IFCS_macro)
+    #else:
+        #gremlin.macro.MacroManager().queue_macro(Decouple_macro)
         
 # Create a macro that can be used repeatedly
-Decouple_macro = gremlin.macro.Macro()
-Decouple_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("V"), True))
-Decouple_macro.add_action(gremlin.macro.PauseAction(0.1))
-Decouple_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("V"), False))
+IFCS_macro = gremlin.macro.Macro()
+IFCS_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("2"), True))
+IFCS_macro.add_action(gremlin.macro.PauseAction(0.1))
+IFCS_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("2"), False))
 
 
-@button.button(hotas.BUT_ComstabOff)
-def onThrottleBtn_BUT_ComstabOff(event, vjoy):
+@button.button(hotas.BUT_AutoLand)
+def onThrottleBtn_BUT_AutoLand(event, vjoy):
     if event.is_pressed:
-        gremlin.macro.MacroManager().queue_macro(IFCSToggle_macro)
-    else:
-        gremlin.macro.MacroManager().queue_macro(IFCSToggle_macro)
+        gremlin.macro.MacroManager().queue_macro(AutoLand_macro)
         
-# Create a macro that can be used repeatedly
-IFCSToggle_macro = gremlin.macro.Macro()
-IFCSToggle_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("2"), True))
-IFCSToggle_macro.add_action(gremlin.macro.PauseAction(0.1))
-IFCSToggle_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("2"), False))
-
-
-@throttle.button(hotas.SWITCH_AutopilotUp)
-def onThrottleBtn_AutopilotUp(event, joy, vjoy):
-    global WheelsDown
-    if WheelsDown == True:
-        if event.is_pressed:
-            gremlin.macro.MacroManager().queue_macro(AutoLand_macro)
-    
         
 # Create a macro that can be used repeatedly
 AutoLand_macro = gremlin.macro.Macro()
@@ -147,30 +167,20 @@ AutoLand_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("N
 AutoLand_macro.add_action(gremlin.macro.PauseAction(3))
 AutoLand_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("N"), False))
 
-'''
-@button.button(hotas.BUT_ComstabOff)
-def onThrottleBtn_BUT_ComstabOff(event, vjoy):
-    if event.is_pressed:
-        vjoy[1].button(scmap.ComstabOff).is_pressed = True
-        time.sleep(.500)
-        vjoy[1].button(scmap.ComstabOff).is_pressed = False
-    else:
-        vjoy[1].button(scmap.ComstabOff).is_pressed = True
-        time.sleep(.500)
-        vjoy[1].button(scmap.ComstabOff).is_pressed = False
 
-
-@button.button(hotas.BUT_GSAFE)
-def onThrottleBtn_BUT_GSAFE(event, vjoy):
+@button.button(hotas.BUT_VTOL)
+def onThrottleBtn_BUT_VTOL(event, vjoy):
     if event.is_pressed:
-        vjoy[1].button(scmap.GSAFE).is_pressed = True
-        time.sleep(.500)
-        vjoy[1].button(scmap.GSAFE).is_pressed = False
+        gremlin.macro.MacroManager().queue_macro(VTOL_macro)
     else:
-        vjoy[1].button(scmap.GSAFE).is_pressed = True
-        time.sleep(.500)
-        vjoy[1].button(scmap.GSAFE).is_pressed = False
-'''
+        gremlin.macro.MacroManager().queue_macro(VTOL_macro)
+
+# Create a macro that can be used repeatedly
+VTOL_macro = gremlin.macro.Macro()
+VTOL_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("3"), True))
+VTOL_macro.add_action(gremlin.macro.PauseAction(0.1))
+VTOL_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("3"), False))
+
 ##############################################################################
 #FLIGHT MODE Section
 
@@ -210,12 +220,24 @@ def onThrottleBtn_BUT_Scan(event, vjoy):
 
 
 ##############################################################################
-#Comms Section
-                                             
-
-##############################################################################
 #Weapons Section
-                   
+'''
+@button.button(hotas.BUT_GunArm)
+def onThrottleBtn_BUT_GunArm(event, vjoy):
+    global GunArmed
+    if event.is_pressed:
+        GunArmed == True
+    else:
+        GunArmed == False
+
+@button.button(hotas.BUT_MissileArm)
+def onThrottleBtn_BUT_MissileArm(event, vjoy):
+    global MissileArmed
+    if event.is_pressed:
+        MissileArmed == True
+    else:
+        MissileArmed == False
+'''                 
 @button.button(hotas.BUT_ESPToggle)
 def onThrottleBtn_BUT_ESPToggle(event, vjoy):
     global ScanMode

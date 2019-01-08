@@ -90,8 +90,9 @@ ZoomHat_UpDown = 1
 # BUTTON BOX (maximum of '?' supported by Star Citizen)
 #-----------------------------------------------------------------------------
 
+
 ComstabOff = 52
 GSAFE = 53
 SelfDestruct = 38
-#ScanMode = 43 #Removed due to Macro 
+#ScanMode = 43 #Removed due to Macro
 

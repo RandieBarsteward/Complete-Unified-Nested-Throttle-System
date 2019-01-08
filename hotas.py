@@ -180,22 +180,23 @@ BUT_PowerOn = 2
 BUT_EngineOn = 3
 BUT_ShieldsOn = 4
 BUT_ShipLights = 5
-BUT_DecoupleOff = 6
-BUT_ComstabOff = 7
-BUT_GSAFE = 8
+BUT_IFCS = 6
+BUT_AutoLand = 7
+BUT_VTOL = 8
 BUT_ModeStealth = 9
 BUT_ModeCombat = 10
 BUT_ModePrecision = 11
 BUT_ScanModeToggle = 12
 BUT_Scan = 13
-BUT_CommsShipPA = 14
-BUT_CommsPortControl = 15
-BUT_CommsHail = 16
-BUT_CommsEmergency = 17
-BUT_WpnARM = 18
-BUT_ESPToggle = 19
-BUT_WpnGroupOneSafe = 20
-BUT_WpnGroupTwoSafe = 21
+BUT_GunArm = 14
+BUT_MissileArm = 15
+BUT_ESPToggle = 16
+BUT_LandGear = 17
+BUT_ShipLock = 18
+BUT_ShipDoors = 19
+BUT_DestructArm = 20
+BUT_SelfDestruct = 21
+
 BUT_WpnGroupThreeSafe = 22
 BUT_WpnGroupFourSafe = 23
 BUT_LandGear = 24
@@ -203,6 +204,7 @@ BUT_ShipLock = 25
 BUT_ShipDoors = 26
 BUT_DestructArm = 27
 BUT_SelfDestruct = 28
+
 
 
 
