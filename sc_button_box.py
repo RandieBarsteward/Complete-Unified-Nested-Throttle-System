@@ -41,20 +41,23 @@ ShieldOn = True
 
 
 
-
 @button.button(hotas.BUT_Key)
 def onThrottleBtn_BUT_Key(event, vjoy):
     global PowerKey
     global PowerState
     global ShieldOn
-    if event.is_pressed:
+    if event.is_pressed == True and PowerState == False : #If key on and not already on
         PowerKey = True
-    elif event.is_pressed == False and PowerState == False:
+    elif event.is_pressed == False and PowerState == False: # If key turned off and power NOT on, set key as off
         PowerKey = False
-    elif event.is_pressed == False:
+    elif event.is_pressed == False and PowerState == True and ShieldOn == False: # If key off and Power ON and shields off, turn off power and set states off.
         PowerKey = False
         PowerState = False
         gremlin.macro.MacroManager().queue_macro(PowerOff_macro)
+    elif event.is_pressed == False and PowerState == True and ShieldOn == True: # If key off and Power ON and shields on, turn off power and set states off.
+        PowerKey = False
+        PowerState = False
+        gremlin.macro.MacroManager().queue_macro(PowerAndShieldOff_macro)
 
 
 @button.button(hotas.BUT_PowerOn)
@@ -62,7 +65,7 @@ def onThrottleBtn_BUT_PowerOn(event, vjoy):
     global PowerKey
     global PowerState
     global ShieldOn
-    if event.is_pressed and PowerKey == True and PowerState == False:
+    if event.is_pressed and PowerKey == True and PowerState == False: # If key in on position and Power NOT already on
         PowerState = True
         ShieldOn = False
         gremlin.macro.MacroManager().queue_macro(PowerOn_macro)
@@ -85,10 +88,8 @@ PowerOff_macro.add_action(gremlin.macro.PauseAction(0.1))
 PowerOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), False))
 
 PowerAndShieldOff_macro = gremlin.macro.Macro()
-PowerAndShieldOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("6"), True)) #Turn off shield
 PowerAndShieldOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), True)) #Turn off power
 PowerAndShieldOff_macro.add_action(gremlin.macro.PauseAction(0.1))
-PowerAndShieldOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("6"), False))
 PowerAndShieldOff_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("5"), False))
 
 @button.button(hotas.BUT_EngineOn)
@@ -113,7 +114,7 @@ def onThrottleBtn_BUT_ShieldsOn(event, vjoy):
     global PowerKey
     global PowerState
     global ShieldOn
-    if event.is_pressed and PowerKey == True and PowerState == True:
+    if event.is_pressed == True and PowerKey == True and PowerState == True:
         gremlin.macro.MacroManager().queue_macro(ShieldsOn_macro)
         ShieldOn = True        
     if event.is_pressed == False and PowerKey == True and PowerState == True:
@@ -221,23 +222,9 @@ def onThrottleBtn_BUT_Scan(event, vjoy):
 
 ##############################################################################
 #Weapons Section
-'''
-@button.button(hotas.BUT_GunArm)
-def onThrottleBtn_BUT_GunArm(event, vjoy):
-    global GunArmed
-    if event.is_pressed:
-        GunArmed == True
-    else:
-        GunArmed == False
 
-@button.button(hotas.BUT_MissileArm)
-def onThrottleBtn_BUT_MissileArm(event, vjoy):
-    global MissileArmed
-    if event.is_pressed:
-        MissileArmed == True
-    else:
-        MissileArmed == False
-'''                 
+#Guns and Missile switch in sc.gunnery.py
+                
 @button.button(hotas.BUT_ESPToggle)
 def onThrottleBtn_BUT_ESPToggle(event, vjoy):
     global ScanMode
@@ -295,7 +282,7 @@ def onThrottleBtn_BUT_ShipDoors(event, vjoy):
         gremlin.macro.MacroManager().queue_macro(ShipDoors_macro)
     else:
         gremlin.macro.MacroManager().queue_macro(ShipDoors_macro)
-        
+       
 # Create a macro that can be used repeatedly
 ShipDoors_macro = gremlin.macro.Macro()
 ShipDoors_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("9"), True))
