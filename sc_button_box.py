@@ -8,8 +8,9 @@ Moduel intended to integrate a custom button box/controller into Joystick Gremli
 import gremlin
 import hotas
 import scmap
-import time
 import math
+#import serial #Serial imported for Serial communication
+import time #Required to use delay functions
 
 
 
@@ -28,7 +29,8 @@ throttle = gremlin.input_devices.JoystickDecorator(hotas.THR_Name,
 
 # Button Box Power On Key and Button
 # Key on allows one button press to start power, key off will shut down power
-
+#ArduinoSerial = serial.Serial('com3',9600)
+#print (ArduinoSerial.readline())
 PowerKey = False
 PowerState = False
 ScanMode = False
