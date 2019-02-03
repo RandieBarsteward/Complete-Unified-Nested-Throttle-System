@@ -217,10 +217,6 @@ def onThrottleBtn_ShieldsOn(event, joy, vjoy):
 def onThrottleBtn_LookBehind(event, vjoy):
     vjoy[1].button(scmap.LookBehind).is_pressed = event.is_pressed
 
-@throttle.button(hotas.THRBTN_LookBehind)
-def onThrottleBtn_LookBehind(event, vjoy):
-    vjoy[1].button(scmap.LookBehind).is_pressed = event.is_pressed
-
 @throttle.button(hotas.THRBTN_MatchTarget)
 def onThrottleBtn_MatchTarget(event, vjoy):
     vjoy[1].button(scmap.MatchTargetSpeed).is_pressed = event.is_pressed

@@ -9,7 +9,7 @@ import gremlin
 import hotas
 import scmap
 import math
-#import serial #Serial imported for Serial communication
+import serial #Serial imported for Serial communication
 import time #Required to use delay functions
 
 
@@ -29,8 +29,8 @@ throttle = gremlin.input_devices.JoystickDecorator(hotas.THR_Name,
 
 # Button Box Power On Key and Button
 # Key on allows one button press to start power, key off will shut down power
-#ArduinoSerial = serial.Serial('com3',9600)
-#print (ArduinoSerial.readline())
+
+ArduinoSerial = serial.Serial('com3',9600)
 PowerKey = False
 PowerState = False
 ScanMode = False
@@ -40,8 +40,6 @@ WheelsDown = False
 GunArmed = False
 MissileArmed = False
 ShieldOn = True
-
-
 
 @button.button(hotas.BUT_Key)
 def onThrottleBtn_BUT_Key(event, vjoy):
@@ -163,7 +161,7 @@ def onThrottleBtn_BUT_AutoLand(event, vjoy):
     if event.is_pressed:
         gremlin.macro.MacroManager().queue_macro(AutoLand_macro)
         
-        
+
 # Create a macro that can be used repeatedly
 AutoLand_macro = gremlin.macro.Macro()
 AutoLand_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("N"), True))
@@ -175,8 +173,10 @@ AutoLand_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("N
 def onThrottleBtn_BUT_VTOL(event, vjoy):
     if event.is_pressed:
         gremlin.macro.MacroManager().queue_macro(VTOL_macro)
+        ArduinoSerial.write('H'.encode()) #send 1
     else:
         gremlin.macro.MacroManager().queue_macro(VTOL_macro)
+        ArduinoSerial.write('L'.encode()) #send 0
 
 # Create a macro that can be used repeatedly
 VTOL_macro = gremlin.macro.Macro()
@@ -186,8 +186,6 @@ VTOL_macro.add_action(gremlin.macro.KeyAction(gremlin.macro.key_from_name("3"), 
 
 ##############################################################################
 #FLIGHT MODE Section
-
-
 
 
 

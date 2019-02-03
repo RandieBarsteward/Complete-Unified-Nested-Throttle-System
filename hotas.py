@@ -204,6 +204,8 @@ BUT_ShipLock = 25
 BUT_ShipDoors = 26
 BUT_DestructArm = 27
 BUT_SelfDestruct = 28
+BUT_Pedal = 29
+BUT_HeadTrack = 30
 
 
 

@@ -6,7 +6,7 @@
 import gremlin
 import hotas
 import scmap
-import sc_button_box
+
 
 
 joystick = gremlin.input_devices.JoystickDecorator(hotas.JOY_Name,
