@@ -1,0 +1,1007 @@
+* {
+  box-sizing: border-box;
+}
+
+:root {
+  --color-rsi-dark-theme-secondary-50: #e8ebed;
+  --color-rsi-dark-theme-secondary-100: #d2d7db;
+  --color-rsi-dark-theme-secondary-300: #a3acb2;
+  --color-rsi-dark-theme-secondary-400: #8d9aa0;
+  --color-rsi-dark-theme-secondary-800: #334752;
+  --color-rsi-dark-theme-secondary-900: #20323a;
+  --color-rsi-dark-theme-complementary-white: #fff;
+  --color-rsi-dark-theme-complementary-blue-accent-dark: #0077cb;
+  --color-rsi-dark-theme-gradient-orange-light: linear-gradient(180deg, #128feb 0%, #c88927);
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  background-image: url("./rsi_images/Rugged_Background.png");
+  background-repeat: repeat;
+
+  background-position: center;
+  background-size: 85%;
+  user-select: none;
+  height: 100%;
+
+  overflow-x: hidden; 
+  overflow-y: hidden;
+  
+}
+
+#start {
+  position: relative;
+  top: 80%;
+  color: #ffffff;
+}
+
+#start button {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  font-family: "arial", monospace;
+  font-size: 20px;
+  text-decoration: none;
+  padding: 5px;
+  border: solid #DDD 2px;
+}
+
+.noselect {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  -khtml-user-select: none;
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Chrome and Opera */
+  cursor: default;
+  -webkit-user-drag: none;
+}
+
+/* Font */
+@font-face {
+  font-family: "arial", monospace;
+  /*src: url("orbitron-medium.otf");*/
+}
+
+/* Grid layout */
+#display {
+  width: 100%;
+  height: 100%;
+  padding: 1px;
+  display: none;
+  background-image: url("./rsi_images/bg-stars-2560.jpg");
+  background-position: center;
+  font-family: "arial", monospace;
+  
+}
+
+
+#tabs {
+  /*  // height sets border size for tab */
+  height: 10%;
+  display: grid;
+  padding: 5px;
+  grid-template-columns: repeat(4, 1fr);
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 15px;
+  grid-gap: 5px 5px;
+}
+
+#tabcontent {
+  height: 80%
+}
+
+#tabcontent div {
+  height: 100%;
+  
+  grid-gap: 5px 5px;
+}
+
+#tabcontent div div,
+#tabs div {
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  opacity: 1;
+}
+
+#tabcontent div div span,
+#tabs div span {
+  display: block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#main {
+  grid-column: 2/6;
+  grid-row: 2/5;
+}
+
+/* ----------- CSS for tabs at top of page -------------- */
+.activeTab {
+  /*border: 1px solid #93d7f7ff;*/
+  --c: #36ffd83b;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.1rem;
+  background: url(./rsi_images/rsi_button_ribbon.svg) no-repeat center;
+  
+  filter: brightness(1.75);
+  
+
+
+}
+
+.inactiveTab {
+
+  color: #23C5C9;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  padding: 0 40px;
+  background: url(./rsi_images/rsi_button_ribbon.svg) no-repeat center;
+  background-size: auto;
+  filter: brightness(1);
+
+}
+
+/* ----------- Stolen Star Citizen Buttons -------------- */
+
+.rsi_button_grid {
+  background: url(./rsi_images/rsi_button_ribbon.svg) no-repeat center;
+  width: 200px;
+  text-transform: uppercase;
+  font-family: 'Electrolize', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #95feb7ff;
+  letter-spacing: 0.1rem;
+  transition-duration: 0.5s;
+}
+
+
+/* ----------- Default Star Pit style button -------------- */
+.starpit {
+  background: url(./rsi_images/rsi_button_ribbon.svg) no-repeat center;
+  width: 200px;
+  text-transform: uppercase;
+  font-family: 'Electrolize', Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  color: #23C5C9;
+  letter-spacing: 0.1rem;
+  
+}
+
+.starpit.active {
+  --c: #36ffd83b;
+  font-weight: bold;
+  color: rgb(255, 255, 255);
+  background: url(./rsi_images/rsi_button_foreground.svg) no-repeat center;
+  width: 200px;
+  filter: brightness(1.75);
+
+
+}
+
+.starpitNoToggle {
+  box-sizing: border-box;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  border: 1px solid #95feb7ff;
+  border-radius: 0.3rem;
+  --c: #36ffd83b;
+  font-size: 12px;
+  color: #95feb7ff;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  padding: 5px;
+  box-shadow: 0 0 10px #062a18ff;
+  transition-duration: 0.5s;
+}
+
+.starpitNoToggle:active {
+  --c: #36ffd83b;
+  font-weight: bold;
+  color: #95feb7ff;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  border: 1px solid #95feb7ff;
+  background-color: #0a2d1dff;
+  box-shadow: 0 0 10px #062a18ff;
+}
+
+.cmType:before {
+  content: "CM CHAFF";
+}
+
+.cmType.active:before {
+  content: "CM FLARE";
+}
+
+.ifcs:after {
+  content: "IFCS Toggle";
+}
+
+.ifcs.active::after {
+  content: "IFCS Toggle";
+}
+
+.esp:after {
+  content: "ESP OFF";
+}
+
+.esp.active::after {
+  content: "ESP ON";
+}
+
+.Gimbal_assist:after {
+  content: "GIMBAL ASSIST OFF";
+}
+
+.Gimbal_assist.active::after {
+  content: "GIMBAL ASSIST ON";
+}
+
+.ai_turret:after {
+  content: "AI Turret OFF";
+}
+
+.ai_turret.active::after {
+  content: "AI Turret ON";
+}
+
+.engine_power:after {
+  content: "ENGINE ON";
+}
+
+.engine_power.active::after {
+  content: "ENGINE OFF";
+}
+
+.shield_power:after {
+  content: "SHIELD ON";
+}
+
+.shield_power.active::after {
+  content: "SHIELD OFF";
+}
+
+.power_plant:after {
+  content: "POWER PLANT ON";
+}
+
+.power_plant.active::after {
+  content: "POWER PLANT OFF";
+}
+
+.Decouple:after {
+  content: "COUPLED MODE";
+}
+
+.Decouple.active::after {
+  content: "DECOUPLED MODE";
+}
+
+.Spot_lights:after {
+  content: "LIGHTS OFF";
+}
+
+.Spot_lights.active::after {
+  content: "LIGHTS ON";
+}
+
+.nav_lights:after {
+  content: "NAV LIGHTS ON";
+}
+
+.nav_lights.active::after {
+  content: "NAV LIGHTS OFF";
+}
+
+.starpit-Long {
+  box-sizing: border-box;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  border: 1px solid #95feb7ff;
+  border-radius: 0.3rem;
+  --c: #36ffd83b;
+  font-size: 12px;
+  color: #95feb7ff;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  padding: 5px;
+  box-shadow: 0 0 10px #062a18ff;
+  transition-duration: 0.5s;
+}
+
+.starpit-Long.active {
+  --c: #36ffd83b;
+  font-weight: bold;
+  color: #95feb7ff;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  border: 1px solid #95feb7ff;
+  background-color: #0a2d1dff;
+  box-shadow: 0 0 10px #062a18ff;
+}
+
+.starpit-Long.cargodoor:after {
+  content: "CARGO DOOR CLOSED";
+}
+
+.starpit-Long.cargodoor.active::after {
+  content: "CARGO DOOR OPEN";
+}
+
+.starpit-Long.dumpcargo:after {
+  content: "CARGO RELEASE";
+}
+
+.starpit-Long.dumpcargo.active::after {
+  content: "RELEASING";
+}
+
+.starpit-Long.bomb_doors:after {
+  content: "BOMB BAY SECURE";
+}
+
+.starpit-Long.bomb_doors.active::after {
+  content: "BOMB BAY OPEN";
+}
+
+.starpit-Long.cmSpread:after {
+  content: "Counter Measure SINGLE";
+}
+
+.starpit-Long.cmSpread.active::after {
+  content: "Counter Measure SPREAD";
+}
+
+.starpitRedToggle.fracture:after {
+  content: "Fracture";
+}
+
+.starpitRedToggle.fracture.active::after {
+  content: "Collect";
+}
+
+.starpitRedToggle {
+  box-sizing: border-box;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  --c: #f4433621;
+  font-weight: bold;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  padding: 5px;
+  transition: all 0.5s;
+  background: url(./rsi_images/rsi_button_large.svg) no-repeat center;
+}
+
+.starpitRedToggle.active {
+  
+  border: 1px solid #d1363cff;
+  --c: #00000033;
+  font-weight: bold;
+  font-size: 12px;
+  color: #ffffff;
+  background-color: #d1363cff;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  box-shadow: 0 0 10px #d1363cff;
+  transition-duration: 0.5s;
+  border-radius: 0.3rem;
+  content: ;
+  transition: all 0.5s;
+  background: url(./rsi_images/sq_42/s42-diagonal-pattern.svg) no-repeat;
+  background-size: 100%,100%;
+}
+/* ----------- Backup toggles -------------- 
+.starpitRedToggle {
+  box-sizing: border-box;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  border: 1px solid #f443368f;
+  --c: #f4433621;
+  font-weight: bold;
+  font-size: 12px;
+  border-radius: 0.3rem;
+  color: #d1363cff;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  padding: 5px;
+  box-shadow: 0 0 10px #f443368f;
+  transition: all 0.5s;
+}
+
+.starpitRedToggle.active {
+  
+  border: 1px solid #d1363cff;
+  --c: #00000033;
+  font-weight: bold;
+  font-size: 12px;
+  color: #000000;
+  background-color: #d1363cff;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  box-shadow: 0 0 10px #d1363cff;
+  transition-duration: 0.5s;
+  border-radius: 0.3rem;
+  content: ;
+  transition: all 0.5s;
+  background-image: (url(none));
+} 
+*/
+.gun_safety:after {
+  content: "GUN ARMED";
+}
+
+.gun_safety.active::after {
+  content: "GUN SAFE";
+}
+
+.missile_safety:after {
+  content: "MISSILE ARMED";
+}
+
+.missile_safety.active::after {
+  content: "MISSILE SAFE";
+}
+
+.mining_mode:after {
+  content: "Flight Mode";
+}
+
+.mining_mode.active::after {
+  content: "Mining Mode";
+}
+
+.MiningPower:before {
+  content: "Power Off";
+}
+
+.MiningPower.active:before {
+  content: "Power On";
+}
+
+.weapon_power:before {
+  content: "WEAPON POWER ON";
+}
+
+.weapon_power.active:before {
+  content: "WEAPON POWER OFF";
+}
+
+.Spool_QT:before {
+  content: "QUANTUM DRIVE OFF";
+}
+
+.Spool_QT.active:before {
+  content: "SPOOLING";
+}
+
+.iframe {
+  border: none;
+}
+
+html,
+body,
+.grid-container {
+  height: 100%;
+  margin: 0;
+}
+
+.mining-grid-container {
+  text-align: center;
+  display: grid;
+  grid-gap: 10px 10px;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "slider slider slider slider""slider slider slider slider""fracture MiningPower MiningPower mining_mode"". MiningPower MiningPower .""item1 item2 item3 item4""item5 item6 item7 item8""cargodoor cargodoor dumpcargo dumpcargo"". . . .";
+}
+
+.slider {
+  grid-area: slider;
+}
+
+.fracture {
+  grid-area: fracture;
+}
+
+.MiningPower {
+  grid-area: MiningPower;
+}
+
+.mining_mode {
+  grid-area: mining_mode;
+}
+
+.item1 {
+  grid-area: item1;
+}
+
+.item2 {
+  grid-area: item2;
+}
+
+.item3 {
+  grid-area: item3;
+}
+
+.item4 {
+  grid-area: item4;
+}
+
+.item6 {
+  grid-area: item6;
+}
+
+.item5 {
+  grid-area: item5;
+}
+
+.item7 {
+  grid-area: item7;
+}
+
+.item8 {
+  grid-area: item8;
+}
+
+.cargodoor {
+  grid-area: cargodoor;
+}
+
+.dumpcargo {
+  grid-area: dumpcargo;
+}
+
+.weapon-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "gun_safety gun_safety . missile_safety missile_safety""weapon_power Gimbal_assist . esp ifcs""ai_turret . . . .""saved_switch . . . .""cmType cmType cmSpread bomb_doors bomb_doors";
+}
+
+.gun_safety {
+  grid-area: gun_safety;
+}
+
+.missile_safety {
+  grid-area: missile_safety;
+}
+
+.weapon_power {
+  grid-area: weapon_power;
+}
+
+.Gimbal_assist {
+  grid-area: Gimbal_assist;
+}
+
+.ai_turret {
+  grid-area: ai_turret;
+}
+
+.esp {
+  grid-area: esp;
+}
+
+.ifcs {
+  grid-area: ifcs;
+}
+
+.saved_switch {
+  grid-area: saved_switch;
+}
+
+.cmType {
+  grid-area: cmType;
+}
+
+.cmSpread {
+  grid-area: cmSpread;
+}
+
+.bomb_doors {
+  grid-area: bomb_doors;
+}
+
+.flight-systems-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "flight_ready flight_ready engine_power shield_power power_plant""flight_ready flight_ready . . .""look_ahead Decouple Spot_lights . doorOpen""Headtracking GForce nav_lights . doorLocks""headtracking_recal SpeedLimit . . ."". . . . .";
+}
+
+.look_ahead {
+  grid-area: look_ahead;
+}
+
+.Headtracking {
+  grid-area: Headtracking;
+}
+
+.headtracking_recal {
+  grid-area: headtracking_recal;
+}
+
+.flight_ready {
+  grid-area: flight_ready;
+}
+
+.GForce {
+  grid-area: GForce;
+}
+
+.SpeedLimit {
+  grid-area: SpeedLimit;
+}
+
+.engine_power {
+  grid-area: engine_power;
+}
+
+.shield_power {
+  grid-area: shield_power;
+}
+
+.power_plant {
+  grid-area: power_plant;
+}
+
+.Decouple {
+  grid-area: Decouple;
+}
+
+.Spot_lights {
+  grid-area: Spot_lights;
+}
+
+.nav_lights {
+  grid-area: nav_lights;
+}
+
+.doorLocks {
+  grid-area: doorLocks;
+}
+
+.doorOpen {
+  grid-area: doorOpen;
+}
+
+.QT-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "Spool_QT Spool_QT Spool_QT . Jump"". . . . ."". . . Landing_Gear_Up VTOL"". . . Landing_Gear_Down Auto_landing";
+}
+
+.Spool_QT {
+  grid-area: Spool_QT;
+}
+
+.Jump {
+  grid-area: Jump;
+}
+
+.Landing_Gear_Up {
+  grid-area: Landing_Gear_Up;
+}
+
+.Landing_Gear_Down {
+  grid-area: Landing_Gear_Down;
+}
+
+.VTOL {
+  grid-area: VTOL;
+}
+
+.Auto_landing {
+  grid-area: Auto_landing;
+}
+
+.grid-container * {
+  position: relative;
+}
+
+.grid-container *:after {
+  display: block;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.sensor-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 1px 1px;
+  grid-template-areas: "Scan_Mode Scan_Mode . Scan ."". . RadarArea RadarArea RadarArea""IFF_Transponder IFF_Transponder RadarArea RadarArea RadarArea""RadarRangeCycle . RadarArea RadarArea RadarArea";
+}
+
+.Scan_Mode {
+  grid-area: Scan_Mode;
+}
+
+.Scan {
+  grid-area: Scan;
+}
+
+.IFF_Transponder {
+  grid-area: IFF_Transponder;
+}
+
+.RadarRangeCycle {
+  grid-area: RadarRangeCycle;
+}
+
+.RadarArea {
+  grid-area: RadarArea;
+}
+
+
+
+
+
+
+
+
+.range-slider {
+  margin-top: 5vh;
+  margin-bottom: 5vh;
+}
+
+.rs-range {
+  position: relative;
+  margin-left: 30px;
+  /*Left justify*/
+  margin-bottom: 40px;
+  width: 600px;
+  background-color: #93d7f7ff;
+  border-radius: 1rem;
+  /*Track colour*/
+  -webkit-appearance: none;
+
+  &:focus {
+    outline: none;
+  }
+
+  &::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    box-shadow: none;
+    background: #93d7f7ff;
+    border: 0px solid #010101;
+  }
+
+  &::-moz-range-track {
+    width: 100%;
+    height: 1px;
+    cursor: pointer;
+    box-shadow: none;
+    background: #93d7f7ff;
+    border-radius: 0px;
+    border: 1px solid #D6F1DE;
+  }
+
+  &::-webkit-slider-thumb {
+    box-shadow: none;
+    border: 0px solid #D6F1DE;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    height: 42px;
+    width: 22px;
+    border-radius: 22px;
+    background: #D6F1DE;
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -10px;
+  }
+
+  &::-moz-range-thumb {
+    box-shadow: none;
+    border: 0px solid #ffffff;
+    box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+    height: 42px;
+    width: 22px;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 1);
+    cursor: pointer;
+    -webkit-appearance: none;
+    margin-top: -20px;
+  }
+
+  &::-moz-focus-outer {
+    border: 0;
+  }
+}
+
+.rs-label {
+  /* Output circle decoration*/
+  position: auto;
+  transform-origin: center center;
+  display: block;
+  /*no idea what this does, leave out for now*/
+  width: 50px;
+  /* Output border size*/
+  height: 30px;
+  /* Output border size*/
+  background: transparent;
+  /* Output background color*/
+  border-radius: 10%;
+  /* How round or square the border*/
+  line-height: 5px;
+  text-align: center;
+  font-weight: bold;
+  padding-top: 5px;
+  /* Space between output numbers and top of border*/
+  box-sizing: border-box;
+  border: 3px solid #93d7f7ff;
+  border-radius: 1rem;
+  /* Outut border size and color*/
+  left: attr(value);
+  color: #93d7f7ff;
+  /* Outut text color*/
+  font-style: normal;
+  font-weight: normal;
+  line-height: normal;
+  font-size: 16px;
+  /* Output text size*/
+}
+
+.onoffswitch {
+  position: relative;
+  width: 80px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+.onoffswitch-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.onoffswitch-label {
+  display: block;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid #95feb7ff;
+  box-shadow: 0 0 10px #062a18ff;
+}
+
+.onoffswitch-inner {
+  display: block;
+  width: 200%;
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
+}
+
+.onoffswitch-inner:before,
+.onoffswitch-inner:after {
+  display: block;
+  float: left;
+  width: 50%;
+  height: 30px;
+  padding: 0;
+  line-height: 30px;
+  font-size: 14px;
+  color: white;
+  font-weight: bold;
+  box-sizing: border-box;
+}
+
+.onoffswitch-inner:before {
+  content: "ON";
+  padding-left: 10px;
+  color: #95feb7ff;
+}
+
+.onoffswitch-inner:after {
+  content: "OFF";
+  padding-right: 10px;
+  background-color: #d1363cff;
+  color: #000000;
+  text-align: right;
+}
+
+.onoffswitch-switch {
+  display: block;
+  width: 18px;
+  margin: 6px;
+  background: #FFFFFF;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 56px;
+
+  transition: all 0.3s ease-in 0s;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-inner {
+  margin-left: 0;
+}
+
+.onoffswitch-checkbox:checked+.onoffswitch-label .onoffswitch-switch {
+  right: 0px;
+}
+
+h1 {
+  text-align: center;
+  box-sizing: border-box;
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin: 2px;
+  --c: #36ffd83b;
+  font-weight: bold;
+  font-size: 12px;
+  color: #95feb7ff;
+  letter-spacing: 0.1rem;
+  text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+  padding: 5px;
+  transition-duration: 0.5s;
+
+}
+
+.player-options-container{
+  display: grid; 
+  grid-template-columns: 1fr; 
+  grid-template-rows: 1fr 1fr 1fr 1fr; 
+  gap: 0px 0px; 
+  grid-template-areas: 
+    "player1"
+    "player2"
+    "player3"
+    "player4"; 
+}
+.player1 { grid-area: player1; }
+.player2 { grid-area: player2; }
+.player3 { grid-area: player3; }
+.player4 { grid-area: player4; }

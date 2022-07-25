@@ -1,0 +1,32 @@
+.player_options-Long {
+    box-sizing: border-box;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 2px;
+    border: 1px solid #95feb7ff;
+    border-radius: 0.3rem;
+    --c: #36ffd83b;
+    font-size: 12px;
+    color: #95feb7ff;
+    letter-spacing: 0.1rem;
+    text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+    padding: 5px;
+    box-shadow: 0 0 10px #062a18ff;
+    transition-duration: 0.5s;
+  }
+  
+  .player_optionsLong.active {
+    --c: #36ffd83b;
+    font-weight: bold;
+    color: #95feb7ff;
+    letter-spacing: 0.1rem;
+    text-shadow: 1px 1px var(--c), 2px 2px var(--c), 3px 3px var(--c);
+    border: 1px solid #95feb7ff;
+    background-color: #0a2d1dff;
+    box-shadow: 0 0 10px #062a18ff;
+  }
+
